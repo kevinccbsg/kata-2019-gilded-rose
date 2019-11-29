@@ -53,16 +53,17 @@ describe('Gilded Rose', function() {
   });
 
   describe('"Aged Brie" conditions', () => {
+    const product = 'Aged Brie';
     it('"Aged Brie" actually increases in Quality the older it gets', () => {
       const initQuality = 48;
-      const gildedRose = new Shop([new Item('Aged Brie', 12, initQuality)]);
+      const gildedRose = new Shop([new Item(product, 12, initQuality)]);
       const result = gildedRose.updateQuality();
       expect(result[0].quality).toBeGreaterThan(initQuality);
     });
 
     it('The Quality of an item is never more than 50', () => {
       const initQuality = 48;
-      const gildedRose = new Shop([new Item('Aged Brie', 12, initQuality)]);
+      const gildedRose = new Shop([new Item(product, 12, initQuality)]);
       gildedRose.updateQuality();
       gildedRose.updateQuality();
       const result = gildedRose.updateQuality();
