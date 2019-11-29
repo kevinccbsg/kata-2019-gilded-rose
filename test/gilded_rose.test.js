@@ -34,4 +34,12 @@ describe('Gilded Rose', function() {
     const result = gildedRose.updateQuality();
     expect(result[0].quality).not.toBeLessThan(0);
   });
+
+  it('Quality should decrease twice when sellIn is expired (equal 0)', () => {
+    const initQuality = 48;
+    const expectedQuality = 46;
+    const gildedRose = new Shop([new Item('My product', 0, initQuality)]);
+    const result = gildedRose.updateQuality();
+    expect(result[0].quality).toEqual(expectedQuality);
+  });
 });
