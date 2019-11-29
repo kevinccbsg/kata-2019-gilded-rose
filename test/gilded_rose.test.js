@@ -12,4 +12,9 @@ describe('Gilded Rose', function() {
     const item = new Item('foo', 0, 0);
     expect(item).toHaveProperty('sellIn');
   });
+
+  it('All items have a Quality value which denotes how valuable the item is', () => {
+    const item = new Item('foo', 0, 0);
+    expect(item).toHaveProperty('quality');
+  });
 });
