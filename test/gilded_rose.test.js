@@ -17,4 +17,13 @@ describe('Gilded Rose', function() {
     const item = new Item('foo', 0, 0);
     expect(item).toHaveProperty('quality');
   });
+
+  it('At the end of each day our system lowers both values for every item', () => {
+    const initQuality = 20;
+    const initSellIn = 10;
+    const gildedRose = new Shop([new Item('My product', initSellIn, initQuality)]);
+    const result = gildedRose.updateQuality();
+    expect(result[0].quality).toBeLessThan(initQuality);
+    expect(result[0].sellIn).toBeLessThan(initSellIn);
+  });
 });
