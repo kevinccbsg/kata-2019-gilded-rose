@@ -26,4 +26,12 @@ describe('Gilded Rose', function() {
     expect(result[0].quality).toBeLessThan(initQuality);
     expect(result[0].sellIn).toBeLessThan(initSellIn);
   });
+
+  it('Quality should never be negative', () => {
+    const gildedRose = new Shop([new Item('My product', 1, 1)]);
+    gildedRose.updateQuality();
+    gildedRose.updateQuality();
+    const result = gildedRose.updateQuality();
+    expect(result[0].quality).not.toBeLessThan(0);
+  });
 });
