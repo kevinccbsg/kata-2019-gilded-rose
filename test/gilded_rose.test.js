@@ -100,7 +100,7 @@ describe('Gilded Rose', function() {
     });
   });
 
-  it.skip('should decrease quality twice as fast "Conjured"', () => {
+  it('should decrease quality twice as fast "Conjured"', () => {
     const initQuality = 20;
     const initSellIn = 10;
     const expectedQuality = 18;
