@@ -99,4 +99,13 @@ describe('Gilded Rose', function() {
       expect(result[0].quality).toEqual(expectedQuality);
     });
   });
+
+  it.skip('should decrease quality twice as fast "Conjured"', () => {
+    const initQuality = 20;
+    const initSellIn = 10;
+    const expectedQuality = 18;
+    const gildedRose = new Shop([new Item('Conjured', initSellIn, initQuality)]);
+    const result = gildedRose.updateQuality();
+    expect(result[0].quality).toEqual(expectedQuality);
+  });
 });
