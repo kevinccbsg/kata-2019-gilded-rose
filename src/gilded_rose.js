@@ -1,3 +1,5 @@
+const R = require('ramda');
+
 class Item {
   constructor(name, sellIn, quality){
     this.name = name;
@@ -86,11 +88,13 @@ class Shop {
 
   updateQuality() {
     this.items = this.items
-    .map(this.commonItem.bind(this))
-    .map(this.sulfuras.bind(this))
-    .map(this.agedBrie.bind(this))
-    .map(this.backstage.bind(this))
-    .map(this.conjured.bind(this));
+    .map(R.pipe(
+      this.commonItem.bind(this),
+      this.sulfuras.bind(this),
+      this.agedBrie.bind(this),
+      this.backstage.bind(this),
+      this.conjured.bind(this)
+    ));
     return this.items;
   }
 }
