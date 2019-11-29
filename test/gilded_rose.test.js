@@ -48,7 +48,7 @@ describe('Gilded Rose', function() {
     const initSellIn = 10;
     const gildedRose = new Shop([new Item('Sulfuras, Hand of Ragnaros', initSellIn, initQuality)]);
     const result = gildedRose.updateQuality();
-    expect(result[0].quality).toEqual(initQuality);
+    expect(result[0].quality).toEqual(80);
     expect(result[0].sellIn).toEqual(initSellIn);
   });
 

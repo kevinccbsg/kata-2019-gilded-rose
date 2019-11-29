@@ -43,6 +43,15 @@ class Shop {
     };
   }
 
+  sulfuras(item) {
+    if (this.exceptions[1] !== item.name) return item;
+    return {
+      ...item,
+      quality: 80,
+      sellIn: item.sellIn,
+    };
+  }
+
   agedBrie(item) {
     if (this.exceptions[2] !== item.name) return item;
     if (item.quality === this.qualityLimit) this.setQualityOperator(0);
@@ -78,6 +87,7 @@ class Shop {
   updateQuality() {
     this.items = this.items
     .map(this.commonItem.bind(this))
+    .map(this.sulfuras.bind(this))
     .map(this.agedBrie.bind(this))
     .map(this.backstage.bind(this))
     .map(this.conjured.bind(this));
