@@ -18,6 +18,9 @@ class Shop {
     this.qualityOperator = 1;
     this.sellInOperator = 1;
     this.qualityLimit = 50;
+    this.backstageDeadline = 0;
+    this.backstagePromo1 = 5;
+    this.backstagePromo2 = 10;
   }
 
   expiredItem(item) {
@@ -52,9 +55,9 @@ class Shop {
 
   backstage(item) {
     if (this.exceptions[0] !== item.name) return item;
-    if (item.sellIn === 0) return { ...item, quality: 0 };
-    if (item.sellIn <= 10) this.setQualityOperator(2);
-    if (item.sellIn <= 5) this.setQualityOperator(3);
+    if (item.sellIn === this.backstageDeadline) return { ...item, quality: 0 };
+    if (item.sellIn <= this.backstagePromo2) this.setQualityOperator(2);
+    if (item.sellIn <= this.backstagePromo1) this.setQualityOperator(3);
     return {
       ...item,
       quality: item.quality + this.qualityOperator,
@@ -73,18 +76,11 @@ class Shop {
   }
 
   updateQuality() {
-    this.items = this.items.map(function (item) {
-      return this.commonItem(item);
-    }, this)
-    .map(function (item) {
-      return this.agedBrie(item);
-    }, this)
-    .map(function (item) {
-      return this.backstage(item);
-    }, this)
-    .map(function (item) {
-      return this.conjured(item);
-    }, this);
+    this.items = this.items
+    .map(this.commonItem.bind(this))
+    .map(this.agedBrie.bind(this))
+    .map(this.backstage.bind(this))
+    .map(this.conjured.bind(this));
     return this.items;
   }
 }
