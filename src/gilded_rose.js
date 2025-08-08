@@ -9,7 +9,7 @@ class Item {
 }
 
 class Shop {
-  constructor(items=[]){
+  constructor(items=[]) {
     this.items = items;
     this.exceptions = [
       'Backstage passes to a TAFKAL80ETC concert',
@@ -102,4 +102,4 @@ class Shop {
 module.exports = {
   Item,
   Shop
-}
+};
