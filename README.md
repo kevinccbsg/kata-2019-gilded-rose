@@ -29,3 +29,7 @@ To generate test coverage report
 ```sh
 npm run test:coverage
 ```
+
+---
+
+Old kata code
